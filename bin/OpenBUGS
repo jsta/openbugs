@@ -1,0 +1,172 @@
+#! /usr/bin/env bash
+
+usage () {
+	cat <<EOF
+SYNOPSIS
+
+    $0 [options] [args]
+
+EXAMPLES
+
+	OpenBUGS
+
+    OpenBUGS script.txt
+
+    OpenBUGS script.txt > res.lst
+
+    OpenBUGS < script.txt >res.lst
+
+    OpenBUGS -t script.txt
+
+    env BUGSIN="/dif/dir" BUGSOUT="/other/dir" OpenBUGS script.txt > /path/to/res.lst
+
+DESCRIPTION
+
+	Invoke OpenBUGS, usually specifying a script and performing template
+    expansion inside the script file to specifiy directory paths.
+
+
+    Names inside of curly brackets in a script file are interpreted 
+    as environmental variables and the values of the environmental 
+    variables are substituted.  The environmental variables can be 
+    set temporarily on the same command line as OpenBUGS execution 
+    using the env function, or on a separate line or in a default 
+    startup file.
+
+        
+    Note: the OpenBUGS script command 'modelSetWD('path')' can now be
+    used as an easier way to set the path where OpenBUGS looks for
+    model, data and initial value files.  The environment variable
+    mechanism is still available however, for backward compatibility.
+
+
+OPTIONS
+
+    -d
+       Dry run.  Script will be printed on stdout. 
+
+    -b 
+        Specify the number of curly brackets used to delimit template
+        names.  
+
+    -h
+
+        help
+
+    -t 
+
+        do not perform template expansion
+
+
+    --   end of options
+
+EOF
+}
+
+
+#incomplete: maybe needed in the future for more complex file handling
+#file_norm () {
+#    if test -e "$2"; then
+#        res=$2
+#    else
+#       :
+#    fi
+#    eval $1=\$res
+#}
+
+#is this ever needed? 2008-08-28 nc
+#export LD_ASSUME_KERNEL-2.4.1
+
+### default configuration ###
+### end default  configuration ###
+
+bin=$(dirname $0)
+
+if test -e  "$mydir/../etc/OpenBUGS"; then
+	. "$mydir/../etc/OpenBUGS"
+fi
+
+if test -e "$HOME/etc/OpenBUGS"; then
+	. "$HOME/etc/OpenBUGS"
+fi
+
+opt_dry=0
+opt_template=1
+opt_brackets=1
+script=''
+scriptflag=''
+while :; do
+	case ${1+"$1"} in
+		--)
+			shift
+			break
+			;;
+		-d)
+			opt_dry=1
+			;;
+		-h|--help)
+			usage
+			exit 0
+			;;
+		-b)
+			shift
+			opt_brackets="$1"
+			;;
+		-t)
+			opt_template=0
+			;;
+		*)
+			script="$1"
+			scriptdir=${script%/}
+			scriptdir=${scriptdir%/*}
+			if test -n "$scriptdir"; then
+				scriptdir=.
+			fi
+			break
+			;;
+	esac
+	shift
+done
+
+if test -n "$script"; then
+        scriptflag="-s" # input supplied as e.g. OpenBUGS script.txt
+	exec <"$script"
+elif tty >/dev/null 2>&1; then
+	opt_template=0
+fi
+
+
+if test $opt_template -eq 1; then
+	for ((;opt_brackets;opt_brackets-=1)); do b_open=$b_open\{; done
+	#work around shell bug: don't use literal curly bracket in %% expression
+	b_close='}'
+	b_close="${b_open//?/$b_close}"
+	template=$(cat)
+	script=''
+	while :; do
+		before="${template%%$b_open*}"
+		script="$script$before"
+		if test "$before" = "$template"; then
+			break
+		else
+			template="${template#$before$b_open}"
+			var="${template%%$b_close*}"
+			script="$script${!var}"
+			template="${template#$var$b_close}"
+		fi
+	done
+	if test $opt_dry = 1; then
+		printf '%s' "$script"
+		exit 0
+	fi
+	exec <<<"$script"
+fi
+
+if ! [ -t 0 ]; then
+    scriptflag="-s" # input supplied from < file as e.g. OpenBUGS < script.txt , not interactively from terminal
+    if test -e "$script"; then
+	exec <"$script"
+    fi
+fi
+
+"$bin"/OpenBUGSCli $scriptflag

@@ -1,0 +1,13 @@
+list(
+Ann1 = 2.0,
+Brian1 = 1.0,
+Clare = 3.0,
+Diane = 2.0,
+Eric1 = 2.0,
+Fred = 3.0,
+Gene = 3.0,
+Henry1 = 2.0,
+I1 = 2.0,
+Ian = 3.0,
+Jane = 3.0,
+q = 0.7381)

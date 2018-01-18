@@ -1,0 +1,13 @@
+	model
+	{
+		for( i in 1 : N ) 
+		   {
+		       x[i] ~ dinv.gauss(mu, lambda)
+				
+		   }
+		
+	# Prior distributions of the model parameters	
+	
+			mu ~ dunif(0.001, 10.0)
+			lambda~ dunif(0.01, 5.0)		
+	}

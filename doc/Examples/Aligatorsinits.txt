@@ -1,0 +1,9 @@
+list(alpha = c(NA, 0, 0, 0, 0),
+	    beta = structure(.Data = c(NA, NA, NA, NA, NA,
+								           NA, 0, 0, 0, 0,
+								           NA, 0, 0, 0, 0,
+								           NA, 0, 0, 0, 0), .Dim = c(4, 5)),
+		gamma = structure(.Data = c(NA, NA, NA, NA, NA,
+     										       NA, 0, 0, 0, 0), .Dim = c(2, 5)),
+		lambda = structure(.Data = c(0, 0, 0, 0,
+									            0, 0, 0, 0), .Dim = c(4, 2)))

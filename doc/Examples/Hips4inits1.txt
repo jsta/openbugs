@@ -1,0 +1,1 @@
+list(base=c(0,0,0),logHR=c(1,1,1),LHR=1) 

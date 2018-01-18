@@ -1,0 +1,1 @@
+list(smoking = 2, tuberculosis = 2, lung.cancer = 2, bronchitis = 2, xray = 2)

@@ -1,0 +1,5 @@
+list(p = c(0.4, 0.1, 0.1, 0.4),
+     error = structure(.Data = c(NA, NA, NA, NA,
+                                                 0.7, 0.3, NA, NA,
+									    0.2, 0.3,0.5, NA,
+									    0.1, 0.1, 0.1, 0.7), .Dim = c(4, 4)))

@@ -1,0 +1,1 @@
+list(beta = 1, pi = 1, kappa = 0, a = c(3, 4, 5), tau = 0.1)

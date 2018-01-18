@@ -1,0 +1,14 @@
+
+	model {
+		# prior distributions
+		psi ~ dunif(0, 1)
+		p ~ dunif(0,1)
+		# zero-inflated binomial model for the augmented data
+		for(i in 1 : nind + nz){
+			z[i] ~ dbern(psi)
+			mu[i] <- z[i ]* p
+			y[i] ~ dbin(mu[i], J)
+		}
+		# N is a derived parameter under data augmentation
+		N<-sum(z[])
+	}

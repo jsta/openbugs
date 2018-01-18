@@ -1,0 +1,27 @@
+CHANGES TO OpenBUGS ITSELF
+--------------------------
+
+For a list of the changes in recent versions of OpenBUGS, see 
+
+http://openbugs.net/w/WhatsNew
+
+
+CHANGES TO THE LINUX PACKAGE 
+----------------------------
+
+Version 3.2.1 (2011-03-21) 
+--------------------------
+First release of the official Linux source package for OpenBUGS 
+
+
+Version 3.2.2 (2012-07)
+-----------------------
+Install binary, library and files directly into $(prefix)/bin,
+$(prefix)/lib, and $(prefix)/share/doc/openbugs, rather than the old
+method of symlinking to files installed in $(prefix)/lib/OpenBUGS.
+
+
+Version 3.2.3 (2014-03)
+--------------------------
+$(DESTDIR) no longer omitted when creating doc dir in Makefile. Thanks
+to Paul Johnson.

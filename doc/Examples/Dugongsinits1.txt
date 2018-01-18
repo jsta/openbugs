@@ -1,0 +1,1 @@
+list(alpha = 0.1, beta = 0.1, tau = 0.1, gamma = 0.5)

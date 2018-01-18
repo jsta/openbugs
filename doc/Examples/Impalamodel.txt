@@ -1,0 +1,18 @@
+model 
+	{
+	# Prior distributions
+		theta~dunif(0,10)
+		theta2<-theta*theta
+		psi~dunif(0,1)
+
+		for(i in 1:(nind+nz)){
+			z[i]~dbern(psi)  # latent indicator variables from data augmentation
+			x[i]~dunif(0,4)   # distance is a random variable
+			logp[i]<-   -((x[i]*x[i])/theta2)  
+			p[i]<-exp(logp[i])
+			mu[i]<-z[i]*p[i] 
+			y[i]~dbern(mu[i])   # observation model
+		}
+		N<-sum(z[1:(nind+nz)])
+		D<- N/48     # 48 km*km = total area of transects
+	}

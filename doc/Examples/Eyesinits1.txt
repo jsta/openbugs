@@ -1,0 +1,1 @@
+list(lambda = c(100, NA), theta = 50, tau = 1)

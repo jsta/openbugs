@@ -1,0 +1,12 @@
+	model
+	{
+		for( i in 1 : N ) 
+		   {
+		       x[i] ~ dexp.power(alpha, lambda)
+		   }
+		
+	# Prior distributions of the model parameters	
+	
+			alpha ~ dunif(0, 20.0)
+			lambda~ dunif(0, 1.0)		
+	}

@@ -1,0 +1,1 @@
+list(mu=10, phi=10, pi=10, tau1= 0.1, tau2 = 0.1)

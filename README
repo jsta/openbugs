@@ -1,0 +1,64 @@
+OpenBUGS is a software package for performing Bayesian analysis and
+simulation using Markov Chain Monte Carlo.
+
+
+
+INSTALLATION
+------------ 
+
+To install OpenBUGS on a standard Linux system : 
+
+./configure
+make
+sudo make install 
+
+The "sudo" is included since "make install" requires root
+(administrative) privileges by default.  If you don't have
+administrative access, you can get around this by installing in a
+location other than /usr/local, for example /home/chris/usr :
+
+./configure --prefix=/home/chris/usr 
+make
+make install 
+
+
+
+DOCUMENTATION 
+-------------
+
+The full documentation for the OpenBUGS modelling language is
+installed as HTML, by default in
+
+/usr/local/lib/OpenBUGS/doc/Manuals/Contents.html
+
+For help on invoking the Linux command-line program,  see 
+
+man OpenBUGS 
+
+For further information about OpenBUGS, see http://openbugs.info
+
+
+
+DEVELOPMENT
+-----------
+
+For information on development with the OpenBUGS source code, see
+the OpenBUGS Developer Manual, installed by default in 
+
+/usr/local/lib/OpenBUGS/doc/Developer/Manual.html
+
+The source code for the OpenBUGS shared library libOpenBUGS.so is
+provided in the Windows package for OpenBUGS, available for download from 
+
+http://www.openbugs.net
+
+The source is written in the Blackbox Component Pascal language, and
+provided as Blackbox compound document (.odc) files.  These can be
+opened in the Windows version of OpenBUGS, but to compile them the
+Blackbox development environment is required, available from 
+
+http://oberon.ch/blackbox.html
+
+Blackbox is only available for Windows, and no Linux development tools
+exist.  The ELF format shared library used by the Linux version of
+OpenBUGS is compiled and linked on Windows.

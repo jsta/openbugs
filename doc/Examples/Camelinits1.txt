@@ -1,0 +1,15 @@
+list(tau = structure(.Data = c(0.5,0,0,0.5), .Dim = c(2,2)),
+		Y = structure(
+				.Data = c(NA,NA,
+				               NA,NA,
+				               NA,NA,
+				              NA, NA,
+				               NA, 2,
+				               NA, 2,
+				               NA, 2,
+				               NA, 2,
+				               3, NA,
+				               3, NA,
+				               3, NA,
+				               3, NA),
+				    .Dim = c(12, 2)))

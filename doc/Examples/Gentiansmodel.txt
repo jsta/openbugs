@@ -1,0 +1,24 @@
+	model 
+	{
+         		# Priors
+         		alpha.occ ~ dunif(-20, 20)
+         		beta.occ ~ dunif(-20, 20)
+         		alpha.p ~ dunif(-20, 20)
+         		beta1.p ~ dunif(-20, 20)
+         		beta2.p ~ dunif(-20, 20)
+
+         		# Likelihood
+         		for (i in 1:R) {
+         			# Model for partially latent state
+            			 z[i] ~ dbern(psi[i])		# True occupancy z at site i
+            			 logit(psi[i]) <- alpha.occ + beta.occ * wetness[i]
+            			 for (j in 1:T) {
+                			# Observation model for actual observations
+               				 y[i,j] ~ dbern(eff.p[i,j])	# Det.-nondet. at i and j
+               				 eff.p[i,j] <- z[i] * p[i,j]
+               				 logit(p[i,j]) <- alpha.p + beta1.p * wetness [i] + beta2.p * experience[i,j]
+            			 }
+        		 }
+         	 	# Derived quantity
+           		occ.fs <- sum(z[])	# Finite sample number of occupied sites
+	}

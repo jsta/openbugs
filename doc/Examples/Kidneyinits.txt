@@ -1,0 +1,2 @@
+list(beta.age = 0, beta.sex = 0, beta.dis=c(NA,0,0,0), 
+     alpha = 0, r=1, tau=0.3)

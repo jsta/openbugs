@@ -1,0 +1,1 @@
+list(j = 1, tau = c(0.1,0.1), alpha = 1.0, beta = 1.0, gamma = 1.0, delta = 1.0)

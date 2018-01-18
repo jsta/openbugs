@@ -1,0 +1,23 @@
+	model 
+	{
+		solution[1:n.grid, 1:dim] <- ode(init[1:dim], grid[1:n.grid], D(C[1:dim], t),  0, tol)
+
+		D(C[1], t) <- PER1 * C[7] - R * kT1 * C[1]
+		D(C[2], t) <- PER2 * C[8] - R * kT2 * C[2] - CLR * C[8] / V2
+		D(C[3], t) <- PER3 * C[8] - R * kT3 * C[3]
+		D(C[4], t) <- (QHEP * C[8] + R * kT3 * V3 * C[3] - 
+			R * kT4 * V4 * C[4] * (1 + CLHEP / (R * Q4 - CLHEP))) / V4
+		D(C[5], t) <- PER5 * C[8] - R * kT5 * C[5]
+		D(C[6], t) <- PER6 * C[8] - R * kT6 * C[6]
+		D(C[7], t) <- (R * (kT2 * V2 * C[2] + kT4 * V4 * C[4] + kT5 * V5 * C[5] + 
+			kT6 * V6 * C[6]) 	- Q1 * C[7]) / VVEN
+		D(C[8], t) <- (R * kT1 * V1 * C[1] - Q1 * C[8]) / VART
+
+		PER1 <- Q1 / V1
+		PER2 <- Q2 / V2
+		PER3 <- Q3 / V3
+		PER5 <- Q5 / V5
+		PER6 <- Q6 / V6
+
+		Q4 <- Q3 + QHEP
+	}

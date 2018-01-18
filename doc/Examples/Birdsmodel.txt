@@ -1,0 +1,18 @@
+
+	model { 
+	# prior distributions 
+		psi~dunif(0,1) 
+		mu~dnorm(0,0.001) 
+		tau~dgamma(.001,.001) # zero-inflated binomial mixture model for 
+		                                          # the augmented data 
+		for(i in 1: nind + nz){ 
+			z[i] ~ dbin(psi,1) 
+			eta[i]~ dnorm(mu, tau) 
+			logit(p[i])<- eta[i] 
+			muy[i]<-p[i] * z[i] 
+			y[i] ~ dbin(muy[i], J) 
+		} 
+		# Derived parameters 
+		N<-sum(z[1 : nind+nz]) 
+		sigma<-sqrt(1  /tau) 
+	}   

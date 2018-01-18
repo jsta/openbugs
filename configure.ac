@@ -1,0 +1,12 @@
+AC_INIT(OpenBUGS, 3.2.3)
+AC_CONFIG_SRCDIR([src/OpenBUGSCli.c])
+
+AM_INIT_AUTOMAKE
+
+AC_PREFIX_DEFAULT(/usr/local)
+
+AC_PROG_CC
+
+AC_CONFIG_FILES([Makefile src/Makefile])
+
+AC_OUTPUT

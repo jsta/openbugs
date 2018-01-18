@@ -1,0 +1,13 @@
+## Installation test script 
+modelSetWD("../doc/Examples")
+modelCheck("Ratsmodel.txt")
+modelData("Ratsdata.txt")
+modelCompile(1) 
+modelInits("Ratsinits.txt")
+modelUpdate(5000) 
+samplesSet("alpha0")
+samplesSet("beta")
+samplesSet("sigma")
+modelUpdate(20000) 
+samplesStats("*")
+# modelQuit() 

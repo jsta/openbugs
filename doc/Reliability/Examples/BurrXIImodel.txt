@@ -1,0 +1,14 @@
+
+	model
+	{
+		for( i in 1 : N ) 
+		   {
+				  x[i] ~ dburrXII(alpha, beta)
+	
+		   }
+			
+			alpha ~ dunif(0.01, 10.0)
+			beta~ dunif(0.01, 10.0)
+	 
+	     								
+	}

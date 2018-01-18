@@ -1,0 +1,1 @@
+list(beta0C = 1.0, beta = 1.0, q = 0.75, phi = structure(.Data = c(0.15,0.15,0.15,0.15), .Dim = c(2, 2)))

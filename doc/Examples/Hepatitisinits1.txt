@@ -1,0 +1,1 @@
+list(alpha0 = 1, beta0 = 1, gamma = 1, tau.alpha = 0.1, tau.beta = 1, tau = 0.1 )

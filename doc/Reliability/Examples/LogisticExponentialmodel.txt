@@ -1,0 +1,12 @@
+	model
+	{
+		for( i in 1 : N ) 
+		   {
+		       x[i] ~ dlogistic.exp(alpha, lambda)
+		   }
+		
+	# Prior distributions of the model parameters	
+	
+			alpha ~ dunif(0.0, 10.0)
+			lambda~ dunif(0, 2.0)		
+	}

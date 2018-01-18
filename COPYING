@@ -1,0 +1,42 @@
+COPYRIGHT
+---------
+
+OpenBUGS is copyright 
+
+(c) 2010-2011 OpenBUGS Project Management Group 
+(c) 1990-1996 Medical Research Council, UK
+(c) 1996-2010 MRC (UK) and Imperial College, UK 
+
+OpenBUGS may be modified and redistributed under the terms of the GPL
+version 3: http://www.gnu.org/licenses/gpl.html
+
+OpenBUGS also includes modified and unmodified components from
+"BlackBox Component Builder" (BlackBox) and from "Component Pascal
+Source Code Beautifier" (CpcBeautifier).
+
+Full and unmodified versions of these software can be obtained from
+BlackBox: http://www.oberon.ch/blackbox.html
+CpcBeautifier: http://www.zinnamturm.eu/downloadsAC.htm
+
+
+DEVELOPMENT
+-----------
+
+The source code for the OpenBUGS shared library libOpenBUGS.so is
+provided in the Windows package for OpenBUGS, available for download from 
+
+http://www.openbugs.info
+
+The source is written in the Blackbox Component Pascal language, and
+provided as Blackbox compound document (.odc) files.  These can be
+opened in the Windows version of OpenBUGS, but to compile them the
+Blackbox development environment is required, available from 
+
+http://oberon.ch/blackbox.html
+
+Blackbox is only available for Windows, and no Linux development tools
+exist.  The Linux shared library is cross-compiled on Windows.  For
+further information about developing OpenBUGS, see the files in the
+Developer subdirectory of the Windows installation.
+
+See each individual source file (.odc) for an exact license statement.

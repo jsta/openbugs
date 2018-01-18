@@ -1,0 +1,13 @@
+	model
+	{
+		for( i in 1 : N ) 
+		   {
+		       x[i] ~ dgumbel(alpha, tau)		
+		   }
+		
+	# Prior distributions of the model parameters			
+	# Gamma Prior		
+			alpha ~ dgamma(0.001, 0.001)
+			tau~ dgamma(0.001, 0.001)	
+					
+	}
